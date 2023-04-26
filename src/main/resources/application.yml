@@ -1,0 +1,29 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/miniautorizador
+    username: root
+    password:
+  rabbitmq:
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 5s
+          max-attempts: 3
+          max-interval: 10s
+          multiplier: 2
+
+server:
+  error:
+    include-stacktrace: never
+
+spring-doc:
+  swagger-ui:
+    path: /
+    tagsSorter: alpha
+    operationsSorter: method
