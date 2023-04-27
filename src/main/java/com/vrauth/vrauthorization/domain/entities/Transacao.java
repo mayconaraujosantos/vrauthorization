@@ -5,15 +5,9 @@ import java.util.UUID;
 
 import com.vrauth.vrauthorization.domain.dto.TransacaoNovaDto;
 import com.vrauth.vrauthorization.domain.enums.TransacaoEnum;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -21,10 +15,8 @@ import jakarta.validation.constraints.NotNull;
 public class Transacao {
 
 	@Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "id", columnDefinition = "VARCHAR(36)")
-    private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@NotNull
 	private String numeroCartao;

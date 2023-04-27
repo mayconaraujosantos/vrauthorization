@@ -3,11 +3,14 @@ version: "3.7"
 services:
 
   mongo:
-    image: mongo:4.2
+    image: mongo:5.0.6
+    restart: always
     hostname: mongo
-    container_name: mongo
+    container_name: mongodb
+    env_file:
+      - .env
     ports:
-      - 27017:27017
+      - 27018:27017
     environment:
       MONGO_INITDB_DATABASE: miniautorizador
       MONGO_INITDB_ROOT_USERNAME: user
@@ -27,10 +30,7 @@ services:
       MYSQL_ROOT_PASSWORD:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
-  # acesso administrativo RabbitMQ:
-  #   http://0.0.0.0:8082
-  #    user: guest
-  #    pass: guest
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: rabbitmq
